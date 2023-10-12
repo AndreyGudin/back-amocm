@@ -4,7 +4,7 @@ import { AxiosResponse } from 'axios';
 import { Observable, map } from 'rxjs';
 
 @Injectable()
-export class AppService {
+export class AuthService {
   constructor(private readonly httpService: HttpService) {}
   auth(): Observable<
     AxiosResponse<{ access_token: string; base_domain: string }>

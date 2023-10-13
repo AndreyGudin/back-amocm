@@ -13,7 +13,7 @@ export class CreateController {
     if (token) return this.createService.createLead(createLeadDto, token);
     throw new NotFoundException();
   }
-
+  @Post('/contact')
   createContact(
     @Req() request: Request,
     @Body() createContactDto: CreateContactDto,
@@ -22,7 +22,7 @@ export class CreateController {
     if (token) return this.createService.createContact(createContactDto, token);
     throw new NotFoundException();
   }
-
+  @Post('/company')
   createCompany(
     @Req() request: Request,
     @Body() createCompanyDto: CreateCompanyDto,

@@ -19,7 +19,6 @@ export class AuthService {
       },
     });
     this.constant.url = (await firstValueFrom(result)).data.base_domain;
-    console.log('this.constant.url auth', this.constant.url);
 
     return (await firstValueFrom(result)).data.access_token;
   }

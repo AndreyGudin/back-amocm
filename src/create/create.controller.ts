@@ -7,27 +7,30 @@ import { CreateLeadDto } from 'src/create/dto/create-lead.dto';
 @Controller('create')
 export class CreateController {
   constructor(private readonly createService: CreateService) {}
+
   @Post('/lead')
   createLead(@Req() request: Request, @Body() createLeadDto: CreateLeadDto) {
-    const token = request.headers.get('Authorization: Bearer');
+    const token = request.headers['authorization'].split(' ')[1];
     if (token) return this.createService.createLead(createLeadDto, token);
     throw new NotFoundException();
   }
+
   @Post('/contact')
   createContact(
     @Req() request: Request,
     @Body() createContactDto: CreateContactDto,
   ) {
-    const token = request.headers.get('Authorization: Bearer');
+    const token = request.headers['authorization'].split(' ')[1];
     if (token) return this.createService.createContact(createContactDto, token);
     throw new NotFoundException();
   }
+
   @Post('/company')
   createCompany(
     @Req() request: Request,
     @Body() createCompanyDto: CreateCompanyDto,
   ) {
-    const token = request.headers.get('Authorization: Bearer');
+    const token = request.headers['authorization'].split(' ')[1];
     if (token) return this.createService.createCompany(createCompanyDto, token);
     throw new NotFoundException();
   }
